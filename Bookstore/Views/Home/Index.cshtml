@@ -18,22 +18,7 @@
     </tr>
     @foreach (Book b in Model.Books)
     {
-        <tr>
-            <td>
-                <h3>@b.Title</h3>
-                <h4>by @b.Author</h4>
-            </td>
-            <td>
-                <ul>
-                    <li>Category: @b.Category</li>
-                    <li>Classification: @b.Classification</li>
-                    <li>ISBN: @b.Isbn</li>
-                    <li>Pages: @b.PageCount</li>
-                    <li>Publisher: @b.Publisher</li>
-                </ul>
-            </td>
-            <td><h1>$@b.Price</h1></td>
-        </tr>
+        <partial name="BookSummaryPV" model="b" />
     }
 </table>
 

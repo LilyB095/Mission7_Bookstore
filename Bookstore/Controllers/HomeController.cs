@@ -23,7 +23,7 @@ namespace Bookstore.Controllers
             var x = new BooksViewModel
             {
                 Books = repo.Books
-                .OrderBy(p => p.Title)
+                .OrderBy(b => b.Title)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 

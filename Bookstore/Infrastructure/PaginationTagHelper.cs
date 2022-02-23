@@ -42,7 +42,11 @@ namespace Bookstore.Infrastructure
                 tb.InnerHtml.Append(i.ToString());
 
                 final.InnerHtml.AppendHtml(tb);
-
+                
+                if (i < PageLink.TotalPages)
+                {
+                    final.InnerHtml.Append(" | ");
+                }
             }
 
             tho.Content.AppendHtml(final.InnerHtml);
