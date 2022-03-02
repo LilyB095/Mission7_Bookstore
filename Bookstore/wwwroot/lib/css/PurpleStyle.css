@@ -1,0 +1,27 @@
+﻿m-lg-2
+.navbar-brand {
+    color: #ecd0fd;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #590f86
+}
+
+.bg-yay {
+    background-color: #590f86;
+}
+
+.btn:hover {
+    background-color: #ecd0fd;
+    border-color: #590f86
+}
+
+.btn {
+    border-color: #ecd0fd
+}
+
+.btn-primary {
+    background: #590f86;
+    border-color: #590f86;
+    border-width: medium;
+}

@@ -6,22 +6,16 @@
 
 @model BooksViewModel
 
-<h1>Welcome to my Bookstore</h1>
+    <h6>Browse Books</h6>
+    <div class="d-grid gap-1">
+        @foreach (Book b in Model.Books)
+        {
+            <partial name="BookSummaryPV" model="b" />
+        }
+    </div>
 
-<p>&nbsp;</p>
+    <p>&nbsp;</p>
 
-<table class="table-bordered">
-    <tr style="color:brown;">
-        <th>Book Title/Author</th>
-        <th>Book Details</th>
-        <th>Price</th>
-    </tr>
-    @foreach (Book b in Model.Books)
-    {
-        <partial name="BookSummaryPV" model="b" />
-    }
-</table>
-
-<p>&nbsp;</p>
-
-<div page-link="@Model.PageInfo" page-action="Index"></div>
+    <div page-link="@Model.PageInfo" page-action="Index" page-class="btn"
+         page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true"
+         class="btn-group pull-right m-1"></div>

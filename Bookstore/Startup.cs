@@ -35,6 +35,13 @@ namespace Bookstore
                 options.UseSqlite(Configuration["ConnectionStrings:BookDBConnection"]);
             });
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository>();
+
+            //enable razor pages
+            services.AddRazorPages();
+
+            //Implement session
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,18 +54,32 @@ namespace Bookstore
 
             // WE WANT ACCESS TO FILES IN WWWROOT FOLDER
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("categorypage",
+                    "{bookCategory}/page{pageNum}",
+                    new { Controller = "Home", action = "Index" }
+                    );
+
                 endpoints.MapControllerRoute(
                     name: "Paging",
                     pattern: "page{pageNum}", //this sets up the slug we can use
-                    defaults: new {Controller = "Home", action="Index"}
+                    defaults: new { Controller = "Home", action = "Index", pageNum = 1 }
                     );
+
+                endpoints.MapControllerRoute("category",
+                    "{bookCategory}",
+                    new { Controller = "Home", action = "Index", pageNum = 1 }
+                    );
+                
                 // SIMPLE WAY OF SETTING UP DEFAULT ROUTE
                 endpoints.MapDefaultControllerRoute();
+
+                // enable razor pages
+                endpoints.MapRazorPages();
             });
         }
     }
