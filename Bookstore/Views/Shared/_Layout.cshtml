@@ -5,31 +5,17 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/lib/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/lib/css/PurpleStyle.css" rel="stylesheet" />
 </head>
 <body>
-    <!--Nav Bar -->
-    <div class="bg-yay text-white p-2">
-        <span class="navbar-brand">Lily Barton - Mission #8</span>
+    <h4>Lily Barton - Mission #7</h4>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
+    <div style="margin-left:10px;margin-right:10px;">
+        @RenderBody()
     </div>
 
-    <div class="row m-3 p-1" style="text-align:center;">
-        <h1>Welcome to my Bookstore</h1>
-    </div>
-
-    <!--Main Area-->
-    <div class="row m-1 p-1">
-        <div id="categories" class="col-3">
-            <vc:categories></vc:categories>
-        </div>
-
-        <div class="col-8">
-            @RenderBody()
-        </div>
-
-        <div class="col-2">
-            <!--Leave Blank, just for aesthetics (: -->
-        </div>
-    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
 </body>
 </html>

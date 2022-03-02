@@ -29,10 +29,6 @@ namespace Bookstore.Infrastructure
         //Different than the View Context
         public PageInfo PageLink { get; set; } //PageInfo = page-info from Index.cshtml
         public string PageAction { get; set; }
-        public string PageClass { get; set; }
-        public bool PageClassesEnabled { get; set; }
-        public string PageClassNormal { get; set; }
-        public string PageClassSelected { get; set; }
         public override void Process (TagHelperContext thc, TagHelperOutput tho)
         {
             IUrlHelper uh = uhf.GetUrlHelper(vc);
@@ -43,17 +39,14 @@ namespace Bookstore.Infrastructure
             {
                 TagBuilder tb = new TagBuilder("a");
                 tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = i });
-
-                if (PageClassesEnabled)
-                {
-                    tb.AddCssClass(PageClass);
-                    tb.AddCssClass(i == PageLink.CurrentPage ? PageClassSelected : PageClassNormal);
-                }
-
                 tb.InnerHtml.Append(i.ToString());
+
                 final.InnerHtml.AppendHtml(tb);
                 
-                
+                if (i < PageLink.TotalPages)
+                {
+                    final.InnerHtml.Append(" | ");
+                }
             }
 
             tho.Content.AppendHtml(final.InnerHtml);
